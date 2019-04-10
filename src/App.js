@@ -6,6 +6,8 @@ import About from './components/pages/About'
 import config from './configs/config'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import axios from 'axios'
+import Login from './components/auth/Login'
+import withAuth from './components/auth/withAuth'
 
 import './App.css';
 
@@ -52,7 +54,7 @@ class App extends Component {
             title,
             completed: false
         }
-        
+
         axios.post(`${config.url}/task`,newTodo).then((res) => {
             this.setState({ todos: [...this.state.todos, res.data]})
         })
@@ -70,7 +72,10 @@ class App extends Component {
                                 <Todos todos={this.state.todos} delTodo={this.delTodo} markCompleted={this.markCompleted} />
                             </React.Fragment>
                         )}/>
-                        <Route path="/about" component={About} />
+                        <Route path="/about" component={withAuth(About)} />
+
+                        <Route path="/login" component={Login} />
+
                     </div>
                 </div>
             </Router>

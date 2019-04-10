@@ -6,7 +6,8 @@ class Header extends Component {
         return (
         <header style={headerStyle}>
             <h1>Todos</h1>
-            <Link style={linkStyle} to="/">Home</Link> | <Link style={linkStyle} to="/about">About</Link>
+            <Link style={linkStyle} to="/">Home</Link> | <Link style={linkStyle} to="/about">About</Link> | <Link  to="/login" style={linkStyle}>Login</Link>
+            
         </header>
         )
     }
